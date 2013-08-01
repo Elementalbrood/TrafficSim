@@ -13,14 +13,15 @@ class Car(Actor):
     WEST = 3
 
     def __init__(self, path, w, turn='right'):
-        self.pos_x = 0
-        self.pos_y = 0
-        self.velocity = 40
+        self.velocity = 30
         self.direction = Car.NORTH
         self.path = path
         self.path_cell_id = self.path.enter_index
-
         Actor.__init__(self, self.path.enter, w)
+
+        self.pos_x = self.cell.x * self.cell.total_length
+        self.pos_y = self.cell.y * self.cell.total_length
+
         self.direction = 0
         self.at_intersection = False
         self.turn = turn
