@@ -481,7 +481,7 @@ class Cell(Coord):
         self.contains_stoplight = False
         self.stoplight = 'green'
         self.occupied = False
-        self.max_distance = 100
+        self.total_distance = 1000
 
     def set_stoplight(self, t):
         self.contains_stoplight = t
