@@ -91,7 +91,7 @@ class Universe:
         #if isinstance(self.world.actors[17], Car):
         #    print math.cos(self.world.actors[17].cell.x)
         #    print math.sin(self.world.actors[17].cell.y)
-        mssg = str(self.world.actors[17].distance_till_cell)#.pos_x) + ", " + str(self.world.actors[17].pos_y)
+        mssg = str(self.world.actors[17].pos_x) + ", " + str(self.world.actors[17].pos_y)
         font = pygame.font.Font(None, 20)
         #render portion
         self.screen.fill(black)

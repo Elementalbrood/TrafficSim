@@ -554,7 +554,7 @@ class Cell(Coord):
         self.stoplight = 'green'
         self.occupied = False
         #currently in feet
-        self.total_length = 5280
+        self.total_length = 1000
         self.total_width = 12
 
     def set_stoplight(self, t):

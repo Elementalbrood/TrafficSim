@@ -45,14 +45,14 @@ class Car(Actor):
         delta /= 1000.0
         temp_t = mph_to_fps(self.velocity)
 
-        self.pos_x += math.cos(self.facing) * temp_t * delta
-        self.pos_y += math.sin(self.facing) * temp_t * delta
-
         self.dist_x = math.cos(self.facing) * temp_t * delta
         self.dist_y = math.sin(self.facing) * temp_t * delta
 
+        self.pos_x += self.dist_x
+        self.pos_y += self.dist_y
+
         if self.distance_till_cell <= 0:
-            remaing_dist = self.distance_till_cell
+            remaing_dist = math.fabs(self.distance_till_cell)
             if self.path.at_intersection(self.cell):
                 self.change_cell(self.turn, remaing_dist)
             else:
@@ -101,6 +101,18 @@ class Car(Actor):
     def go_straight(self):
         if self.path.at_intersection(self.cell):
             self.path = self.path.lead_into_path['straight']
+
+    def at_stoplight(self):
+        if self.cell.contains_stoplight:
+            if self.distance_till_cell < 10: # or waiting behind car
+                return True
+            else:
+                return False
+        else:
+            return False
+
+    def slow_down_approach(self):
+        pass
 
     def act(self, delta):
         if self.at_stoplight():

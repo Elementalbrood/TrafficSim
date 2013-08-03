@@ -21,7 +21,7 @@ class TrafficLight(Actor):
 
     def act(self, delta):
 
-        self.time_pasted += 1#(delta/1000.0)
+        self.time_pasted += (delta/1000.0)
 
         if self.time_pasted >= self.state_times[self.current_sid % 3]:
             self.current_sid += 1
