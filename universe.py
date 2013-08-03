@@ -4,6 +4,7 @@ from datetime import datetime
 import time
 from world import *
 import pygame
+from pygame.locals import *
 
 
 DEBUG = True
@@ -87,6 +88,11 @@ class Universe:
         else:
             self.world.update(0)
 
+        #if isinstance(self.world.actors[17], Car):
+        #    print math.cos(self.world.actors[17].cell.x)
+        #    print math.sin(self.world.actors[17].cell.y)
+        mssg = str(self.world.actors[17].distance_till_cell)#.pos_x) + ", " + str(self.world.actors[17].pos_y)
+        font = pygame.font.Font(None, 20)
         #render portion
         self.screen.fill(black)
         grid = self.world.canvas
@@ -110,7 +116,10 @@ class Universe:
                                  [20*column, 20*row, 20, 20])
 
         self.clock.tick(20)
-
+        block = font.render(mssg, True, white)
+        rect = block.get_rect()
+        rect.center = self.screen.get_rect().center
+        self.screen.blit(block, rect)
         pygame.display.flip()
 
     def quit(self):

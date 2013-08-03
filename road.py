@@ -2,6 +2,7 @@ __author__ = 'elemental'
 
 from path import *
 
+
 class Road:
     def __init__(self):
 

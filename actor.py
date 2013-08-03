@@ -1,5 +1,6 @@
 __author__ = 'elemental'
 
+
 class Actor():
     next_id = 0
     def __init__(self, cell=None, world=None):
